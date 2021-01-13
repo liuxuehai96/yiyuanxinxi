@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.PaiBanMapper">
+	<resultMap id="BaseResultMap" type="com.entity.PaiBan">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="fid" property="fid" jdbcType="INTEGER" />
+		<result column="uid" property="uid" jdbcType="INTEGER" />
+		<result column="yi" property="yi" jdbcType="INTEGER" />
+		<result column="er" property="er" jdbcType="INTEGER" />
+		<result column="san" property="san" jdbcType="INTEGER" />
+		<result column="si" property="si" jdbcType="INTEGER" />
+		<result column="wu" property="wu" jdbcType="INTEGER" />
+		<result column="liu" property="liu" jdbcType="INTEGER" />
+		<result column="tian" property="tian" jdbcType="INTEGER" />
+		<result column="pubtime" property="pubtime" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="ptype" property="ptype" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, fid, uid, yi, er, san, si, wu, liu, tian, pubtime,
+		status, ptype
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from paiban
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from paiban
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.entity.PaiBan">
+		insert into paiban (id, fid,
+		uid,
+		yi, er, san, si,
+		wu, liu, tian, pubtime,
+		status, ptype)
+		values
+		(#{id,jdbcType=INTEGER}, #{fid,jdbcType=INTEGER},
+		#{uid,jdbcType=INTEGER},
+		#{yi,jdbcType=INTEGER},
+		#{er,jdbcType=INTEGER}, #{san,jdbcType=INTEGER},
+		#{si,jdbcType=INTEGER},
+		#{wu,jdbcType=INTEGER},
+		#{liu,jdbcType=INTEGER}, #{tian,jdbcType=INTEGER},
+		#{pubtime,jdbcType=VARCHAR},
+		#{status,jdbcType=VARCHAR},
+		#{ptype,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.entity.PaiBan">
+		insert into paiban
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="fid != null">
+				fid,
+			</if>
+			<if test="uid != null">
+				uid,
+			</if>
+			<if test="yi != null">
+				yi,
+			</if>
+			<if test="er != null">
+				er,
+			</if>
+			<if test="san != null">
+				san,
+			</if>
+			<if test="si != null">
+				si,
+			</if>
+			<if test="wu != null">
+				wu,
+			</if>
+			<if test="liu != null">
+				liu,
+			</if>
+			<if test="tian != null">
+				tian,
+			</if>
+			<if test="pubtime != null">
+				pubtime,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="ptype != null">
+				ptype,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="fid != null">
+				#{fid,jdbcType=INTEGER},
+			</if>
+			<if test="uid != null">
+				#{uid,jdbcType=INTEGER},
+			</if>
+			<if test="yi != null">
+				#{yi,jdbcType=INTEGER},
+			</if>
+			<if test="er != null">
+				#{er,jdbcType=INTEGER},
+			</if>
+			<if test="san != null">
+				#{san,jdbcType=INTEGER},
+			</if>
+			<if test="si != null">
+				#{si,jdbcType=INTEGER},
+			</if>
+			<if test="wu != null">
+				#{wu,jdbcType=INTEGER},
+			</if>
+			<if test="liu != null">
+				#{liu,jdbcType=INTEGER},
+			</if>
+			<if test="tian != null">
+				#{tian,jdbcType=INTEGER},
+			</if>
+			<if test="pubtime != null">
+				#{pubtime,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="ptype != null">
+				#{ptype,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.entity.PaiBan">
+		update paiban
+		<set>
+			<if test="fid != null">
+				fid = #{fid,jdbcType=INTEGER},
+			</if>
+			<if test="uid != null">
+				uid = #{uid,jdbcType=INTEGER},
+			</if>
+			<if test="yi != null">
+				yi = #{yi,jdbcType=INTEGER},
+			</if>
+			<if test="er != null">
+				er = #{er,jdbcType=INTEGER},
+			</if>
+			<if test="san != null">
+				san = #{san,jdbcType=INTEGER},
+			</if>
+			<if test="si != null">
+				si = #{si,jdbcType=INTEGER},
+			</if>
+			<if test="wu != null">
+				wu = #{wu,jdbcType=INTEGER},
+			</if>
+			<if test="liu != null">
+				liu = #{liu,jdbcType=INTEGER},
+			</if>
+			<if test="tian != null">
+				tian = #{tian,jdbcType=INTEGER},
+			</if>
+			<if test="pubtime != null">
+				pubtime = #{pubtime,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="ptype != null">
+				ptype = #{ptype,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.entity.PaiBan">
+		update paiban
+		set
+		fid = #{fid,jdbcType=INTEGER},
+		uid = #{uid,jdbcType=INTEGER},
+		yi =
+		#{yi,jdbcType=INTEGER},
+		er = #{er,jdbcType=INTEGER},
+		san =
+		#{san,jdbcType=INTEGER},
+		si = #{si,jdbcType=INTEGER},
+		wu =
+		#{wu,jdbcType=INTEGER},
+		liu = #{liu,jdbcType=INTEGER},
+		tian =
+		#{tian,jdbcType=INTEGER},
+		pubtime = #{pubtime,jdbcType=VARCHAR},
+		status
+		= #{status,jdbcType=VARCHAR},
+		ptype = #{ptype,jdbcType=VARCHAR}
+		where id
+		= #{id,jdbcType=INTEGER}
+	</update>
+
+
+	<select id="getCount" parameterType="java.util.Map" resultType="int">
+		select count(*) from paiban where 1=1
+		<if test="name!=null ">
+			and name like concat('%',#{name,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="fid != null">
+			and fid = #{fid,jdbcType=VARCHAR}
+		</if>
+
+		<if test="uid != null">
+			and uid = #{uid,jdbcType=VARCHAR}
+		</if>
+		<if test="btype != null">
+			and btype = #{btype,jdbcType=VARCHAR}
+		</if>
+
+		<if test="status != null">
+			and status = #{status,jdbcType=VARCHAR}
+		</if>
+	</select>
+	<select id="getAll" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+
+		from paiban where 1=1
+		<if test="name!=null ">
+			and name like concat('%',#{name,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="fid != null">
+			and fid = #{fid,jdbcType=VARCHAR}
+		</if>
+
+		<if test="uid != null">
+			and uid = #{uid,jdbcType=VARCHAR}
+		</if>
+		<if test="btype != null">
+			and btype = #{btype,jdbcType=VARCHAR}
+		</if>
+
+		<if test="status != null">
+			and status = #{status,jdbcType=VARCHAR}
+		</if>
+		order by pubtime desc
+	</select>
+	<select id="getByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from paiban where 1=1
+		<if test="name!=null ">
+			and name like concat('%',#{name,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="fid != null">
+			and fid = #{fid,jdbcType=VARCHAR}
+		</if>
+
+		<if test="uid != null">
+			and uid = #{uid,jdbcType=VARCHAR}
+		</if>
+		<if test="btype != null">
+			and btype = #{btype,jdbcType=VARCHAR}
+		</if>
+
+		<if test="status != null">
+			and status = #{status,jdbcType=VARCHAR}
+		</if>
+		order by pubtime desc
+		<if test="pageno!=null and pageSize!=null">
+			limit #{pageno},#{pageSize}
+		</if>
+	</select>
+
+	<select id="getByPage2" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from paiban where 1=1
+		<if test="name!=null ">
+			and name like concat('%',#{name,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="fid != null">
+			and fid = #{fid,jdbcType=VARCHAR}
+		</if>
+
+		<if test="uid != null">
+			and uid = #{uid,jdbcType=VARCHAR}
+		</if>
+		<if test="btype != null">
+			and btype = #{btype,jdbcType=VARCHAR}
+		</if>
+
+		<if test="status != null">
+			and status = #{status,jdbcType=VARCHAR}
+		</if>
+		order by xnum desc
+		<if test="pageno!=null and pageSize!=null">
+			limit #{pageno},#{pageSize}
+		</if>
+	</select>
+	<select id="getTop10" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from paiban where 1=1
+		<if test="name!=null ">
+			and name like concat('%',#{name,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="fid != null">
+			and fid = #{fid,jdbcType=VARCHAR}
+		</if>
+
+		<if test="uid != null">
+			and uid = #{uid,jdbcType=VARCHAR}
+		</if>
+		<if test="btype != null">
+			and btype = #{btype,jdbcType=VARCHAR}
+		</if>
+		<if test="status != null">
+			and status = #{status,jdbcType=VARCHAR}
+		</if>
+		order by dnum desc
+		limit 0,10
+	</select>
+
+
+</mapper>
